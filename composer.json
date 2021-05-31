@@ -1,4 +1,14 @@
 {
+    "name": "dezento/crawlify",
+    "description": "Fast Concurrent Crawler",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dezento",
+            "email": "milovanpanic92@gmail.com"
+        }
+    ],
     "require": {
         "php": "^8.0",
         "illuminate/collections": "^8.38",
