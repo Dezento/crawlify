@@ -14,8 +14,8 @@
         "illuminate/collections": "^8.38",
         "guzzlehttp/guzzle": "^7.3",
         "dezento/effective-url-middleware": "^1.0",
-        "symfony/dom-crawler": "^5.2",
-        "symfony/css-selector": "^5.2"
+        "symfony/dom-crawler": "^5.4",
+        "symfony/css-selector": "^5.4"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.2"
