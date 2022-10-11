@@ -122,10 +122,6 @@ class Crawlify
         ]);
     }
 
-    public function send() {
-        
-    }
-
     private function convertToArray(Collection|array $data): array
     {
         if (!is_array($data)) {
