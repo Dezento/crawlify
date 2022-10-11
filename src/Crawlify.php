@@ -65,6 +65,7 @@ class Crawlify
             [
                 'concurrency' => $this->_settings->get('concurrency'),
                 'fulfilled' => function ($response) use ($responses) {
+                  
                     $data = (object)[
                         'url' => $response->getHeaderLine('X-GUZZLE-EFFECTIVE-URL'),
                         'response' => $response
@@ -86,6 +87,7 @@ class Crawlify
 
     private function processRequests(Collection $responses): void
     {
+      
         $responses
             ->map(fn($result) => (object)['url' => $result->url, 'response' => $result->response->getBody()->getContents()])
             ->each(function ($result) {
@@ -100,19 +102,28 @@ class Crawlify
 
     private function createRequests(array $requests): \Generator
     {
+
         for ($i = 0; $i < count($requests); $i++) {
-            yield new Request('GET', $requests[$i]);
+    
+            yield new Request($this->_settings->get('method') ?? 'GET', $requests[$i], $this->_settings->get('headers') ?? [], json_encode($this->_settings->get('data')));
         }
+
+
     }
 
     public function fetch(): Collection
     {
+    
         $this->sendRequests($this->createRequests($this->convertToArray($this->_requests)));
 
         return collect([
             'fulfilled' => $this->_fulfilled,
             'rejected' => $this->_rejected ?? collect([])
         ]);
+    }
+
+    public function send() {
+        
     }
 
     private function convertToArray(Collection|array $data): array
